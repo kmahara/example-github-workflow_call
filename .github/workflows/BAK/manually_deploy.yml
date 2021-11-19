@@ -1,0 +1,30 @@
+name: Deploy manually
+
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        type: choice
+        description: Deploy project
+        options: 
+        - exchange-admin
+        - exchange-api
+        - exchange-app
+        required: true
+      target:
+        type: choice
+        description: Target aws environment
+        options: 
+        - dev
+        - stg
+        - prd
+        - cxr-dev
+        required: true
+
+# (2021-11-19 時点) with で指定する項目に inputs を使用できないため、以下のように実装できない。
+jobs:
+ call-workflow:
+    uses: trasisjp/mahara-test/.github/workflows/workflow_cicd.yml@dev
+    with:
+      project: ${{ inputs.project }}
+      target: ${{ inputs.target }}

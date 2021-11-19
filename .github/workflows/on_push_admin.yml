@@ -1,0 +1,16 @@
+name: On push for admin
+
+on:
+  push:
+    branches: [dev, stg, prd]
+    paths:
+      - "admin/**"
+      - ".github/workflows/on_push_admin.yml"
+      - ".github/workflows/workflow_cicd.yml"
+
+jobs:
+ call-workflow:
+    uses: kmahara/example-github-workflow_call/.github/workflows/workflow_cicd.yml@master
+    with:
+      project: admin
+      target: ${{ github.ref_name }}

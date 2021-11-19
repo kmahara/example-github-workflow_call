@@ -1,0 +1,18 @@
+.classpath
+.gradle/
+.project
+.settings/
+bin/
+build/
+log/*.log
+settings.gradle
+
+# for Intellij
+.idea
+gradle
+gradlew
+gradlew.bat
+lombok-*
+
+.DS_Store
+

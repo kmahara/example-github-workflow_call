@@ -1,0 +1,17 @@
+name: On push for app
+
+on:
+  push:
+    branches: [dev, stg, prd]
+    paths:
+      - "app/**"
+      - ".github/workflows/on_push_app.yml"
+      - ".github/workflows/workflow_cicd.yml"
+
+jobs:
+ call-workflow:
+    uses: kmahara/example-github-workflow_call/.github/workflows/workflow_cicd.yml@master
+
+    with:
+      project: app
+      target: ${{ github.ref_name }}
